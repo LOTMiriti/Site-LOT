@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotérica | Correspondente Autorizado Caixa</title>
+    <meta name="description" content="Sua Lotérica e Correspondente Caixa Aqui. Bolões oficiais, abertura de conta, consórcios e financiamentos sem filas e com atendimento pelo WhatsApp.">
+    
+    <!-- Google Fonts: Plus Jakarta Sans e Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuração de Cores e Fontes no Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        caixa: {
+                            blue: '#005CA9',
+                            dark: '#003B70',
+                            light: '#E6F0F8',
+                            orange: '#F39200',
+                            orangeHover: '#D98200',
+                        },
+                        whatsapp: {
+                            DEFAULT: '#25D366',
+                            hover: '#1EBE5D',
+                        },
+                        surface: '#F4F7FA',
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 30px -5px rgba(0, 59, 112, 0.08)',
+                        'card': '0 4px 20px -2px rgba(0, 59, 112, 0.06)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados complementares */
+        body {
+            background-color: #F4F7FA;
+            color: #1E293B;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        /* Animação sutil para o botão flutuante do WhatsApp */
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { transform: scale(1.04); box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+        }
+        .animate-whatsapp {
+            animation: pulse-soft 2.5s infinite;
+        }
+
+        /* Padrão geométrico sutil no Hero */
+        .hero-pattern {
+            background-color: #003B70;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-caixa-blue selection:text-white">
+
+    <!-- ===================================================================== -->
+    <!-- 1. HEADER / NAVEGAÇÃO FIXA                                            -->
+    <!-- ===================================================================== -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo Estilizado -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-caixa-blue to-caixa-dark flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <!-- Ícone Trevo / Estrela Estilizada -->
+                        <svg class="w-6 h-6 text-caixa-orange" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C9.5 2 7.5 4 7.5 6.5C7.5 7.9 8.1 9.1 9.1 10C7.5 9.8 6 10.6 5.2 12C4.2 13.7 4.8 15.9 6.5 16.9C7.8 17.7 9.4 17.5 10.5 16.7C10.1 18.2 10.6 19.9 12 20.8C13.4 19.9 13.9 18.2 13.5 16.7C14.6 17.5 16.2 17.7 17.5 16.9C19.2 15.9 19.8 13.7 18.8 12C18 10.6 16.5 9.8 14.9 10C15.9 9.1 16.5 7.9 16.5 6.5C16.5 4 14.5 2 12 2Z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="js-nome-loterica block font-heading font-extrabold text-lg sm:text-xl text-caixa-dark leading-tight">
+                            Lotérica Boa Sorte
+                        </span>
+                        <span class="block text-xs font-medium text-caixa-blue tracking-wide">
+                            Correspondente Autorizado Caixa
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Navegação Desktop -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-600">
+                    <a href="#boloes" class="hover:text-caixa-blue transition-colors">Bolões da Semana</a>
+                    <a href="#abertura-conta" class="hover:text-caixa-blue transition-colors">Abertura de Conta</a>
+                    <a href="#consorcios" class="hover:text-caixa-blue transition-colors">Consórcios</a>
+                    <a href="#financiamentos" class="hover:text-caixa-blue transition-colors">Financiamentos</a>
+                    <a href="#localizacao" class="hover:text-caixa-blue transition-colors">Localização</a>
+                </nav>
+
+                <!-- Botão Ação Rápida Desktop + Menu Mobile Button -->
+                <div class="flex items-center gap-3">
+                    <a href="#" data-wpp-msg="Olá! Vim pelo site e gostaria de atendimento." 
+                       class="js-wpp-link hidden sm:inline-flex items-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold text-sm px-4 py-2.5 rounded-xl shadow-sm transition-all hover:-translate-y-0.5">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                        <span>Atendimento WhatsApp</span>
+                    </a>
+
+                    <!-- Botão Hambúrguer Mobile -->
+                    <button id="mobile-menu-btn" aria-label="Abrir Menu" class="lg:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none">
+                        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#boloes" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-caixa-light hover:text-caixa-blue">Bolões da Semana</a>
+            <a href="#abertura-conta" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-caixa-light hover:text-caixa-blue">Abertura de Conta</a>
+            <a href="#consorcios" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-caixa-light hover:text-caixa-blue">Consórcios</a>
+            <a href="#financiamentos" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-caixa-light hover:text-caixa-blue">Financiamentos</a>
+            <a href="#localizacao" class="mobile-nav-link block px-4 py-3 rounded-xl text-base font-medium text-slate-700 hover:bg-caixa-light hover:text-caixa-blue">Localização e Horários</a>
+            <div class="pt-2">
+                <a href="#" data-wpp-msg="Olá! Vim pelo site e gostaria de atendimento." 
+                   class="js-wpp-link flex items-center justify-center gap-2 w-full bg-whatsapp text-white font-semibold py-3.5 rounded-xl shadow-md">
+                    <span>Falar no WhatsApp Agora</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 2. HERO SECTION (PRIMEIRA DOBRA)                                      -->
+    <!-- ===================================================================== -->
+    <section class="hero-pattern pt-32 pb-20 lg:pt-40 lg:pb-28 relative overflow-hidden">
+        <!-- Elementos decorativos de brilho -->
+        <div class="absolute top-0 right-0 -mr-24 -mt-24 w-96 h-96 rounded-full bg-caixa-blue/30 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-24 -mb-24 w-80 h-80 rounded-full bg-caixa-orange/20 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Coluna Esquerda: Texto e CTAs -->
+                <div class="lg:col-span-7 text-white space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium text-blue-100">
+                        <span class="w-2 h-2 rounded-full bg-caixa-orange animate-ping"></span>
+                        <span>Correspondente Caixa Aqui • Atendimento Rápido e Sem Filas</span>
+                    </div>
+
+                    <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+                        Sua Lotérica de Confiança: <span class="text-caixa-orange">Bolões Especiais</span> e Soluções Financeiras Caixa
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-blue-100/90 leading-relaxed max-w-2xl">
+                        Garanta sua cota nos bolões oficiais da semana ou resolva sua abertura de conta, consórcio e financiamento direto pelo WhatsApp, com a segurança de um correspondente autorizado e sem enfrentar filas de agência.
+                    </p>
+
+                    <!-- Botões Principais -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <a href="#boloes" class="inline-flex items-center justify-center gap-2 bg-caixa-orange hover:bg-caixa-orangeHover text-white font-bold text-base px-7 py-4 rounded-xl shadow-lg shadow-orange-950/20 transition-all hover:-translate-y-0.5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+                            <span>Garantir Cota de Bolão</span>
+                        </a>
+                        
+                        <a href="#" data-wpp-msg="Olá! Gostaria de falar com um especialista sobre os serviços financeiros Caixa." 
+                           class="js-wpp-link inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold text-base px-7 py-4 rounded-xl shadow-lg shadow-green-950/20 transition-all hover:-translate-y-0.5">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                            <span>Falar com Especialista</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coluna Direita: Card Visual de Atendimento Rápido -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-2xl border border-white/20 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-caixa-blue">Facilidade Total</span>
+                                <h2 class="font-heading text-xl font-bold text-slate-900">Atendimento Expresso</h2>
+                            </div>
+                            <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full border border-emerald-200">
+                                ● Online Agora
+                            </span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Item 1 -->
+                            <div class="flex items-start gap-4 p-3.5 rounded-xl bg-surface">
+                                <div class="w-10 h-10 rounded-lg bg-caixa-blue/10 text-caixa-blue flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Sem Filas de Banco</h3>
+                                    <p class="text-xs text-slate-600 mt-0.5">Inicie sua abertura de conta ou simulação de crédito sem perder tempo em agências.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="flex items-start gap-4 p-3.5 rounded-xl bg-surface">
+                                <div class="w-10 h-10 rounded-lg bg-caixa-orange/15 text-caixa-orange flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Segurança Oficial Caixa</h3>
+                                    <p class="text-xs text-slate-600 mt-0.5">Permissionária Lotérica e Correspondente Autorizado com processos 100% seguros.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="flex items-start gap-4 p-3.5 rounded-xl bg-surface">
+                                <div class="w-10 h-10 rounded-lg bg-whatsapp/15 text-emerald-600 flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Reserva Direta no WhatsApp</h3>
+                                    <p class="text-xs text-slate-600 mt-0.5">Consulte as cotas de bolões disponíveis e garanta sua participação com praticidade.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. SEÇÃO DE BOLÕES DA SEMANA (DESTAQUE DE VENDAS)                     -->
+    <!-- ===================================================================== -->
+    <section id="boloes" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+            <span class="inline-block bg-caixa-orange/15 text-caixa-orange font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
+                Aumente suas chances
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                Bolões Especiais da Semana
+            </h2>
+            <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                Jogue com mais dezenas e multiplique suas probabilidades com nossos bolões oficiais organizados pela lotérica.
+            </p>
+        </div>
+
+        <!-- Filtro Rápido por Loteria -->
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" id="bolao-filters">
+            <button data-filter="todos" class="filter-btn active px-5 py-2.5 rounded-xl text-sm font-bold bg-caixa-blue text-white shadow-sm transition-all">
+                Todos os Bolões
+            </button>
+            <button data-filter="megasena" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all">
+                Mega-Sena
+            </button>
+            <button data-filter="lotofacil" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all">
+                Lotofácil
+            </button>
+            <button data-filter="quina" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all">
+                Quina
+            </button>
+        </div>
+
+        <!-- Grid de Cards de Bolões (Preenchido via JS ou HTML estático sincronizado) -->
+        <div id="boloes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Os cards serão renderizados automaticamente pelo JavaScript a partir de CONFIG_LOTERICA.boloes -->
+        </div>
+
+        <!-- Nota Informativa -->
+        <div class="mt-10 bg-amber-50 border border-amber-200/80 rounded-2xl p-4 sm:p-5 flex items-start sm:items-center gap-3.5 max-w-4xl mx-auto">
+            <svg class="w-6 h-6 text-amber-600 shrink-0 mt-0.5 sm:mt-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <p class="text-xs sm:text-sm text-amber-900">
+                <strong>Aviso importante:</strong> As cotas são limitadas e sujeitas à disponibilidade no balcão no momento do contato. Consulte o status atualizado e as condições de retirada pelo nosso WhatsApp.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. SEÇÃO DE SERVIÇOS FINANCEIROS CAIXA (3 PILARES + COMPLEMENTARES)   -->
+    <!-- ===================================================================== -->
+    <section class="py-20 bg-white border-y border-slate-200/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="inline-block bg-caixa-light text-caixa-blue font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
+                    Correspondente Autorizado Caixa
+                </span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Soluções Financeiras Sem Filas
+                </h2>
+                <p class="text-slate-600 mt-3 text-base sm:text-lg">
+                    Conte com nossa equipe especializada para abrir sua conta, planejar suas conquistas com consórcio ou simular seu financiamento.
+                </p>
+            </div>
+
+            <!-- Grid dos 3 Pilares Principais -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Pilar 1: Abertura de Conta Caixa -->
+                <div id="abertura-conta" class="scroll-mt-28 bg-surface rounded-2xl p-8 border border-slate-200/80 shadow-card flex flex-col justify-between hover:border-caixa-blue/40 transition-all">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-caixa-blue text-white flex items-center justify-center mb-6 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-3">
+                            Abertura de Conta Caixa
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Abra sua Conta Corrente, Poupança ou Conta Caixa Fácil com rapidez, orientação sobre documentos e sem precisar enfrentar longas filas na agência bancária.
+                        </p>
+                        <ul class="space-y-2.5 text-sm text-slate-700 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Conta Corrente e Poupança</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Solicitação de Cartão Caixa</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Análise ágil e sem burocracia</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" data-wpp-msg="Olá! Tenho interesse em abrir uma Conta Caixa pela lotérica. Quais documentos preciso?" 
+                       class="js-wpp-link w-full inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3.5 px-5 rounded-xl shadow-sm transition-all">
+                        <span>Quero Abrir Minha Conta</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Pilar 2: Consórcios Caixa -->
+                <div id="consorcios" class="scroll-mt-28 bg-surface rounded-2xl p-8 border border-slate-200/80 shadow-card flex flex-col justify-between hover:border-caixa-orange/50 transition-all relative">
+                    <div class="absolute top-6 right-6">
+                        <span class="bg-caixa-orange/15 text-caixa-orange text-xs font-bold px-3 py-1 rounded-full">
+                            Sem Juros
+                        </span>
+                    </div>
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-caixa-orange text-white flex items-center justify-center mb-6 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-3">
+                            Consórcios Caixa
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Planeje a compra do seu imóvel, carro, moto ou serviços com parcelas que cabem no seu orçamento, sem juros e com a solidez da Caixa.
+                        </p>
+                        <ul class="space-y-2.5 text-sm text-slate-700 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Consórcio Imobiliário e Automotivo</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Contemplação por sorteio ou lance</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Use seu FGTS no consórcio de imóveis</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" data-wpp-msg="Olá! Gostaria de fazer uma simulação de Consórcio Caixa." 
+                       class="js-wpp-link w-full inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3.5 px-5 rounded-xl shadow-sm transition-all">
+                        <span>Simular Consórcio</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+                <!-- Pilar 3: Financiamentos e Crédito -->
+                <div id="financiamentos" class="scroll-mt-28 bg-surface rounded-2xl p-8 border border-slate-200/80 shadow-card flex flex-col justify-between hover:border-caixa-blue/40 transition-all">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-caixa-dark text-white flex items-center justify-center mb-6 shadow-md">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-slate-900 mb-3">
+                            Financiamentos e Crédito
+                        </h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                            Realize o sonho da casa própria ou organize suas finanças com as melhores taxas do mercado no Crédito Imobiliário e Consignado Caixa.
+                        </p>
+                        <ul class="space-y-2.5 text-sm text-slate-700 mb-8">
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Financiamento Habitacional (MCMV / SBPE)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Empréstimo Consignado (INSS e Servidores)</span>
+                            </li>
+                            <li class="flex items-center gap-2.5">
+                                <svg class="w-4 h-4 text-caixa-blue shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                <span>Acompanhamento completo da aprovação</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#" data-wpp-msg="Olá! Gostaria de fazer uma simulação de Financiamento ou Crédito Caixa." 
+                       class="js-wpp-link w-full inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3.5 px-5 rounded-xl shadow-sm transition-all">
+                        <span>Simular Financiamento</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Barra Complementar: Serviços do Dia a Dia -->
+            <div class="mt-12 bg-caixa-dark rounded-2xl p-6 sm:p-8 text-white shadow-soft">
+                <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-caixa-orange">Atendimento Presencial Completo</span>
+                        <h4 class="font-heading text-xl font-bold mt-1">Também resolvemos suas demandas do dia a dia no balcão:</h4>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto">
+                        <div class="bg-white/10 rounded-xl px-4 py-3 text-center">
+                            <span class="block text-sm font-semibold">Pagamento de Boletos</span>
+                            <span class="text-xs text-blue-200">Contas e tributos</span>
+                        </div>
+                        <div class="bg-white/10 rounded-xl px-4 py-3 text-center">
+                            <span class="block text-sm font-semibold">Saques e Depósitos</span>
+                            <span class="text-xs text-blue-200">Conta Caixa e BB</span>
+                        </div>
+                        <div class="bg-white/10 rounded-xl px-4 py-3 text-center">
+                            <span class="block text-sm font-semibold">Benefícios Sociais</span>
+                            <span class="text-xs text-blue-200">Bolsa Família, FGTS, PIS</span>
+                        </div>
+                        <div class="bg-white/10 rounded-xl px-4 py-3 text-center">
+                            <span class="block text-sm font-semibold">Aposentadoria INSS</span>
+                            <span class="text-xs text-blue-200">Recebimento seguro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. SEÇÃO DIFERENCIAIS ("POR QUE RESOLVER CONOSCO?")                   -->
+    <!-- ===================================================================== -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <h2 class="font-heading text-3xl font-extrabold text-slate-900">
+                Por que resolver conosco?
+            </h2>
+            <p class="text-slate-600 mt-3">
+                Unimos a credibilidade oficial da Caixa com a proximidade e agilidade do atendimento local.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Diferencial 1 -->
+            <div class="bg-white p-8 rounded-2xl shadow-card border border-slate-100 text-center">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-caixa-light text-caixa-blue flex items-center justify-center mb-5">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Atendimento Sem Filas</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Evite horas de espera em agências bancárias. Aqui você tem atendimento personalizado, ágil e com hora marcada se precisar.
+                </p>
+            </div>
+
+            <!-- Diferencial 2 -->
+            <div class="bg-white p-8 rounded-2xl shadow-card border border-slate-100 text-center">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-orange-50 text-caixa-orange flex items-center justify-center mb-5">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Correspondente Oficial Caixa</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Operações 100% homologadas e seguras. Toda a documentação de conta, consórcio ou financiamento é tramitada pelos canais oficiais.
+                </p>
+            </div>
+
+            <!-- Diferencial 3 -->
+            <div class="bg-white p-8 rounded-2xl shadow-card border border-slate-100 text-center">
+                <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-5">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"/></svg>
+                </div>
+                <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Agilidade pelo WhatsApp</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Tire dúvidas, envie documentos iniciais para pré-análise ou reserve sua cota do bolão da semana direto pelo celular.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. SEÇÃO DE LOCALIZAÇÃO, HORÁRIOS E RODAPÉ (COMPLIANCE)               -->
+    <!-- ===================================================================== -->
+    <section id="localizacao" class="py-16 bg-white border-t border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-surface rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-soft">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6">
+                        <span class="inline-block bg-caixa-blue/10 text-caixa-blue font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                            Venha nos visitar
+                        </span>
+                        <h2 class="font-heading text-3xl font-extrabold text-slate-900">
+                            Onde Estamos e Horários de Atendimento
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+                            <!-- Endereço -->
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-caixa-blue text-white flex items-center justify-center shrink-0 mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Endereço da Loja</h3>
+                                    <p class="js-endereco text-sm text-slate-600 mt-1">Av. Principal, 123 - Centro</p>
+                                    <p class="js-cidade text-sm text-slate-600">Sua Cidade - UF</p>
+                                </div>
+                            </div>
+
+                            <!-- Horários -->
+                            <div class="flex items-start gap-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-caixa-orange text-white flex items-center justify-center shrink-0 mt-1">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 text-sm">Horário de Funcionamento</h3>
+                                    <p class="js-horario-semana text-sm text-slate-600 mt-1">Seg a Sex: 08h00 às 18h00</p>
+                                    <p class="js-horario-sabado text-sm text-slate-600">Sábado: 08h00 às 12h00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <a href="#" target="_blank" rel="noopener noreferrer" 
+                               class="js-maps-link inline-flex items-center gap-2 bg-caixa-blue hover:bg-caixa-dark text-white font-semibold text-sm px-6 py-3.5 rounded-xl shadow-sm transition-all">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                                <span>Abrir Rota no Google Maps</span>
+                            </a>
+
+                            <a href="#" data-wpp-msg="Olá! Gostaria de confirmar o horário de funcionamento hoje." 
+                               class="js-wpp-link inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-sm px-6 py-3.5 rounded-xl transition-all">
+                                <span>Chamar no WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card Visual de Contato Rápido -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-caixa-blue to-caixa-dark rounded-2xl p-8 text-white shadow-lg">
+                        <h3 class="font-heading text-xl font-bold mb-2">Prefere resolver sem sair de casa?</h3>
+                        <p class="text-sm text-blue-100 mb-6 leading-relaxed">
+                            Nossa equipe de atendimento digital está pronta para te auxiliar com simulações de consórcio, financiamento, abertura de conta e reserva de bolões.
+                        </p>
+                        <div class="bg-white/10 rounded-xl p-4 mb-6 border border-white/15">
+                            <span class="block text-xs text-blue-200 uppercase font-semibold">WhatsApp Oficial da Loja</span>
+                            <span class="js-telefone-exibicao font-heading text-xl font-extrabold tracking-wide mt-1 block">
+                                (11) 99999-9999
+                            </span>
+                        </div>
+                        <a href="#" data-wpp-msg="Olá! Estou no site da lotérica e gostaria de atendimento." 
+                           class="js-wpp-link w-full inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-4 px-6 rounded-xl shadow-md transition-all">
+                            <span>Iniciar Conversa Agora</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé Institucional e Compliance -->
+    <footer class="bg-slate-900 text-slate-400 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-b border-slate-800 pb-8">
+                <div>
+                    <span class="js-nome-loterica font-heading font-extrabold text-xl text-white block">
+                        Lotérica Boa Sorte
+                    </span>
+                    <span class="text-sm text-slate-400 mt-1 block">
+                        Permissionária Lotérica e Correspondente Autorizado Caixa Econômica Federal
+                    </span>
+                </div>
+                <div class="text-sm text-slate-400 md:text-right">
+                    <p class="js-razao-social font-medium text-slate-300">Razão Social: Lotérica Boa Sorte Ltda.</p>
+                    <p class="js-cnpj mt-0.5">CNPJ: 00.000.000/0001-00</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>
+                    Aviso Legal: Esta empresa atua como Permissionária Lotérica e Correspondente Bancário Autorizado da Caixa Econômica Federal, nos termos da Resolução CMN nº 4.935/2021. Jogos de loteria são proibidos para menores de 18 anos. Jogue com responsabilidade.
+                </p>
+                <p class="shrink-0">
+                    © <span id="ano-atual">2026</span> <span class="js-nome-loterica">Lotérica Boa Sorte</span>.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP                                           -->
+    <!-- ===================================================================== -->
+    <a href="#" data-wpp-msg="Olá! Vim pelo site da Lotérica e gostaria de atendimento." 
+       aria-label="Falar no WhatsApp"
+       class="js-wpp-link animate-whatsapp fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-whatsapp hover:bg-whatsapp-hover text-white rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+        </svg>
+    </a>
+
+    <!-- ===================================================================== -->
+    <!-- SCRIPT CENTRALIZADO DE CONFIGURAÇÃO E INTERATIVIDADE                  -->
+    <!-- ===================================================================== -->
+    <script>
+        /**
+         * ===================================================================
+         * EDITE AQUI OS DADOS DA SUA LOTÉRICA (ÚNICO LUGAR PARA ALTERAR)
+         * ===================================================================
+         */
+        const CONFIG_LOTERICA = {
+            nomeLoterica: "MIRITI DA SORTE",
+            razaoSocial: "Loteria da praça e Serviços Ltda.",
+            cnpj: "10.506.839/0001-50",
+            
+            // Coloque apenas números com DDI (55) + DDD + Número (sem espaços ou traços)
+            whatsappNumero: "5591996249304",
+            whatsappExibicao: "(91) 99624-9304",
+            
+            endereco: "RD. Dr. João Miranda, s/n° - São Sebastião",
+            cidadeEstado: "Abaetetuba - PA • CEP 68440-000",
+            horarioSemana: "Seg a Sex: 07h00 às 18h00",
+            horarioSabado: "Sábado: 07h00 às 12h00",
+            linkMaps: "https://maps.google.com/?q=Casa+Loterica",
+
+            // Lista de Bolões da Semana (você pode editar valores, dezenas e concursos aqui)
+            boloes: [
+                {
+                    id: 1,
+                    categoria: "megasena",
+                    nome: "Mega-Sena Acumulada",
+                    badge: "Acumulado • Cotas Limitadas",
+                    corHeader: "from-emerald-600 to-emerald-800",
+                    corBadge: "bg-emerald-100 text-emerald-800",
+                    concurso: "Sorteio Quinta-feira • 20h",
+                    detalhes: "2 Jogos de 8 Dezenas",
+                    cotasRestantes: "Últimas 6 cotas",
+                    valorCota: "R$ 38,00"
+                },
+                {
+                    id: 2,
+                    categoria: "lotofacil",
+                    nome: "Lotofácil Especial",
+                    badge: "Mais Vendido",
+                    corHeader: "from-purple-700 to-purple-900",
+                    corBadge: "bg-purple-100 text-purple-800",
+                    concurso: "Sorteio Hoje • 20h",
+                    detalhes: "5 Jogos de 16 Dezenas",
+                    cotasRestantes: "8 cotas disponíveis",
+                    valorCota: "R$ 35,00"
+                },
+                {
+                    id: 3,
+                    categoria: "quina",
+                    nome: "Quina Super Trevo",
+                    badge: "Cotas Limitadas",
+                    corHeader: "from-indigo-700 to-blue-900",
+                    corBadge: "bg-indigo-100 text-indigo-800",
+                    concurso: "Sorteio Diário • 20h",
+                    detalhes: "4 Jogos de 7 Dezenas",
+                    cotasRestantes: "10 cotas disponíveis",
+                    valorCota: "R$ 28,00"
+                }
+            ]
+        };
+
+        /**
+         * ===================================================================
+         * LÓGICA DO SISTEMA (NÃO PRECISA ALTERAR ABAIXO)
+         * ===================================================================
+         */
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Atualiza textos institucionais em toda a página
+            document.title = `${CONFIG_LOTERICA.nomeLoterica} | Correspondente Autorizado Caixa`;
+            
+            document.querySelectorAll(".js-nome-loterica").forEach(el => el.textContent = CONFIG_LOTERICA.nomeLoterica);
+            document.querySelectorAll(".js-razao-social").forEach(el => el.textContent = `Razão Social: ${CONFIG_LOTERICA.razaoSocial}`);
+            document.querySelectorAll(".js-cnpj").forEach(el => el.textContent = `CNPJ: ${CONFIG_LOTERICA.cnpj}`);
+            document.querySelectorAll(".js-endereco").forEach(el => el.textContent = CONFIG_LOTERICA.endereco);
+            document.querySelectorAll(".js-cidade").forEach(el => el.textContent = CONFIG_LOTERICA.cidadeEstado);
+            document.querySelectorAll(".js-horario-semana").forEach(el => el.textContent = CONFIG_LOTERICA.horarioSemana);
+            document.querySelectorAll(".js-horario-sabado").forEach(el => el.textContent = CONFIG_LOTERICA.horarioSabado);
+            document.querySelectorAll(".js-telefone-exibicao").forEach(el => el.textContent = CONFIG_LOTERICA.whatsappExibicao);
+            document.querySelectorAll(".js-maps-link").forEach(el => el.href = CONFIG_LOTERICA.linkMaps);
+            
+            const anoEl = document.getElementById("ano-atual");
+            if (anoEl) anoEl.textContent = new Date().getFullYear();
+
+            // 2. Função auxiliar para gerar URL do WhatsApp
+            function gerarLinkWhatsApp(mensagem) {
+                const textoCodificado = encodeURIComponent(mensagem);
+                return `https://wa.me/${CONFIG_LOTERICA.whatsappNumero}?text=${textoCodificado}`;
+            }
+
+            // 3. Atualiza todos os botões estáticos de WhatsApp
+            function atualizarLinksWhatsApp() {
+                document.querySelectorAll(".js-wpp-link").forEach(link => {
+                    const msg = link.getAttribute("data-wpp-msg") || `Olá! Vim pelo site da ${CONFIG_LOTERICA.nomeLoterica}.`;
+                    link.href = gerarLinkWhatsApp(msg);
+                    link.target = "_blank";
+                    link.rel = "noopener noreferrer";
+                });
+            }
+
+            // 4. Renderiza os Cards de Bolões dinamicamente
+            const boloesGrid = document.getElementById("boloes-grid");
+
+            function renderizarBoloes(filtro = "todos") {
+                if (!boloesGrid) return;
+                boloesGrid.innerHTML = "";
+
+                const listaFiltrada = filtro === "todos" 
+                    ? CONFIG_LOTERICA.boloes 
+                    : CONFIG_LOTERICA.boloes.filter(b => b.categoria === filtro);
+
+                listaFiltrada.forEach(bolao => {
+                    const mensagemWpp = `Olá, ${CONFIG_LOTERICA.nomeLoterica}! Gostaria de reservar uma cota do bolão *${bolao.nome}* (${bolao.detalhes} - Cota ${bolao.valorCota}). Ainda está disponível?`;
+                    const urlWpp = gerarLinkWhatsApp(mensagemWpp);
+
+                    const cardHTML = `
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-card border border-slate-200/80 flex flex-col justify-between transition-all hover:-translate-y-1 hover:shadow-soft">
+                            <div>
+                                <!-- Topo Colorido do Bolão -->
+                                <div class="bg-gradient-to-r ${bolao.corHeader} p-6 text-white relative">
+                                    <div class="flex items-center justify-between gap-2 mb-3">
+                                        <span class="${bolao.corBadge} text-xs font-extrabold uppercase tracking-wide px-3 py-1 rounded-full">
+                                            ${bolao.badge}
+                                        </span>
+                                        <span class="text-xs font-medium text-white/85 bg-black/20 px-2.5 py-1 rounded-lg">
+                                            ${bolao.cotasRestantes}
+                                        </span>
+                                    </div>
+                                    <h3 class="font-heading text-2xl font-extrabold">${bolao.nome}</h3>
+                                    <p class="text-sm text-white/90 mt-1">${bolao.concurso}</p>
+                                </div>
+
+                                <!-- Corpo do Card -->
+                                <div class="p-6 space-y-4">
+                                    <div class="flex items-center justify-between py-2.5 border-b border-slate-100">
+                                        <span class="text-sm text-slate-500">Composição do Bolão</span>
+                                        <span class="text-sm font-bold text-slate-900">${bolao.detalhes}</span>
+                                    </div>
+                                    <div class="flex items-center justify-between py-1">
+                                        <span class="text-sm text-slate-500">Valor da Cota</span>
+                                        <span class="font-heading text-2xl font-extrabold text-caixa-blue">${bolao.valorCota}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botão de Reserva -->
+                            <div class="px-6 pb-6">
+                                <a href="${urlWpp}" target="_blank" rel="noopener noreferrer"
+                                   class="w-full inline-flex items-center justify-center gap-2 bg-whatsapp hover:bg-whatsapp-hover text-white font-bold py-3.5 px-5 rounded-xl shadow-sm transition-all">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                                    <span>Reservar Cota no WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    boloesGrid.insertAdjacentHTML("beforeend", cardHTML);
+                });
+            }
+
+            // 5. Lógica dos botões de filtro dos bolões
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            filterBtns.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    filterBtns.forEach(b => {
+                        b.classList.remove("bg-caixa-blue", "text-white", "shadow-sm");
+                        b.classList.add("bg-white", "text-slate-600", "border", "border-slate-200");
+                    });
+                    btn.classList.remove("bg-white", "text-slate-600", "border", "border-slate-200");
+                    btn.classList.add("bg-caixa-blue", "text-white", "shadow-sm");
+
+                    const categoria = btn.getAttribute("data-filter");
+                    renderizarBoloes(categoria);
+                });
+            });
+
+            // 6. Controle do Menu Mobile
+            const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const iconOpen = document.getElementById("icon-open");
+            const iconClose = document.getElementById("icon-close");
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener("click", () => {
+                    const isHidden = mobileMenu.classList.contains("hidden");
+                    mobileMenu.classList.toggle("hidden", !isHidden);
+                    iconOpen.classList.toggle("hidden", isHidden);
+                    iconClose.classList.toggle("hidden", !isHidden);
+                });
+
+                // Fecha o menu ao clicar em um link
+                document.querySelectorAll(".mobile-nav-link").forEach(link => {
+                    link.addEventListener("click", () => {
+                        mobileMenu.classList.add("hidden");
+                        iconOpen.classList.remove("hidden");
+                        iconClose.classList.add("hidden");
+                    });
+                });
+            }
+
+            // Inicializa renderizações
+            atualizarLinksWhatsApp();
+            renderizarBoloes("todos");
+        });
+    </script>
+</body>
+</html>
